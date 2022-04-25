@@ -14,6 +14,10 @@ const { chromium } = require("playwright");
   });
 
   bot.launch();
+
+  // Tinchgina yakulash :)
+  process.once("SIGINT", () => bot.stop("SIGINT"));
+  process.once("SIGTERM", () => bot.stop("SIGTERM"));
 })();
 
 async function createGetVideoUrl() {
@@ -26,7 +30,3 @@ async function createGetVideoUrl() {
     return video;
   };
 }
-
-// Enable graceful stop
-process.once("SIGINT", () => bot.stop("SIGINT"));
-process.once("SIGTERM", () => bot.stop("SIGTERM"));
